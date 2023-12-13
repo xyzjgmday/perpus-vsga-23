@@ -1,5 +1,11 @@
 <?php
+	session_start();
 	include './config/konfigurasi-umum.php';
+
+	if (!isset($_SESSION['id_admin'])) {
+		header('Location: login.php'); // Redirect ke halaman login jika belum login
+		exit();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +26,9 @@
 				<p>Telepon: (022) 7203155</h3>
 			</div>
 			<div id="user-info">
-				<p>Hi, Admin Perpus!</p>
+				<p>Hi, <?php echo $_SESSION['nama_lengkap']; ?>!</p>
+                <p><a href="logout.php" title="Logout">Logout</a></p>
+
 			</div>
 		</header>
 
