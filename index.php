@@ -1,7 +1,7 @@
+
 <?php
 	session_start();
 	include './config/konfigurasi-umum.php';
-
 	if (!isset($_SESSION['id_admin'])) {
 		header('Location: login.php'); // Redirect ke halaman login jika belum login
 		exit();
@@ -18,38 +18,11 @@
 </head>
 <body>
 	<div id="wrapper">
+	<?php
+		include './app/layout/header.php';
+		include './app/layout/sidebar-menu.php';
+	?>
 
-		<header>
-			<div id="header-banner" class="text-center">
-				<h1>Perpustakaan Umum</h1>
-				<h3>Jalan Kemerdekaan Indonesia No. 17 Bandung 1945</h3>
-				<p>Telepon: (022) 7203155</h3>
-			</div>
-			<div id="user-info">
-				<p>Hi, <?php echo $_SESSION['nama_lengkap']; ?>!</p>
-                <p><a href="logout.php" title="Logout">Logout</a></p>
-
-			</div>
-		</header>
-
-		<sidebar>
-			<nav>
-				<ul>
-					<li><a href="index.php" title="Beranda">Beranda</a></li>
-					<li class="section-menu">Data Master</li>
-					<li><a href="index.php?p=anggota" title="Data Anggota">Data Anggota</a></li>
-					<li><a href="index.php?p=buku" title="Data Buku">Data Buku</a></li>
-					<li><a href="index.php?p=kategori" title="Data Kategori">Data Kategori</a></li>
-					<li><a href="index.php?p=penulis" title="Data Penulis">Data Penulis</a></li>
-					<li><a href="index.php?p=penerbit" title="Data Penerbit">Data Penerbit</a></li>
-					<li class="section-menu">Data Transaksi</li>
-					<li><a href="index.php?p=peminjaman" title="Data Penulis">Transaksi Peminjaman</a></li>
-					<li><a href="index.php?p=pengembalian" title="Data Penerbit">Transaksi Pengembalian</a></li>
-					<span class="separator"></span>
-					<li><a href="logout.php" title="Logout">Logout</a></li>
-				</ul>
-			</nav>
-		</sidebar>
 
 		<?php
 			/* Menentukkan halaman berdasarkan menu yang dipilih */
@@ -74,11 +47,7 @@
 			}
 		?>
 
-		<footer class="text-center">
-			<p><?php echo $_SITE_INFO; ?></p>
-			<p><?php echo $_SITE_CREDIT; ?></p>
-		</footer>
-
+		<?php include './app/layout/footer.php'; ?>
 	</div>
 
 	<script src="./assets/js/app.js"></script>
